@@ -1,7 +1,7 @@
 {
     "Name": "Silenced Rasp",
     "Author": "ampedPF",
-    "Version": "0.1.0-alpha1",
+    "Version": "1.0.0-stable",
     "Description": "Silence the sound when opening chests, doors, shipping bin and trash can.",
     "UniqueID": "ampedPF.SilencedRasp",
     "UpdateKeys": ["Nexus:21966", "GitHub:ampedPF/Silenced-Rasp"], // when you release the mod, see https://stardewvalleywiki.com/Modding:Modder_Guide/APIs/Update_checks
