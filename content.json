@@ -1,0 +1,134 @@
+{
+    "Format": "2.0.0",
+    "ConfigSchema": {
+        "openChest_muted": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "doorOpen_muted": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "doorClose_muted": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "doorCreak_muted": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "doorCreakReverse_muted": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "trashcanlid_muted": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        }
+    },
+    "Changes": [
+        // Chest
+        {
+            "Action": "EditData",
+            "Target": "Data/AudioChanges",
+            "Entries": {
+                "161": {
+                    "ID": "openChest",
+                    "Category": "Sound",
+                    "FilePaths": [ "{{AbsoluteFilePath: assets/silence.ogg}}" ],
+                    "StreamedVorbis": false,
+                    "Looped": false
+                }
+            },
+            "When": {
+                "openChest_muted": true
+            }
+        },
+
+        // Door
+        {
+            "Action": "EditData",
+            "Target": "Data/AudioChanges",
+            "Entries": {
+                "10": {
+                    "ID": "doorClose",
+                    "Category": "Sound",
+                    "FilePaths": [ "{{AbsoluteFilePath: assets/silence.ogg}}" ],
+                    "StreamedVorbis": false,
+                    "Looped": false
+                }
+            },
+            "When": {
+                "doorClose_muted": true
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/AudioChanges",
+            "Entries": {
+                "321": {
+                    "ID": "doorOpen",
+                    "Category": "Sound",
+                    "FilePaths": [ "{{AbsoluteFilePath: assets/silence.ogg}}" ],
+                    "StreamedVorbis": false,
+                    "Looped": false
+                }
+            },
+            "When": {
+                "doorOpen_muted": true
+            }
+        },
+
+        // Door creak
+        {
+            "Action": "EditData",
+            "Target": "Data/AudioChanges",
+            "Entries": {
+                "320": {
+                    "ID": "doorCreak",
+                    "Category": "Sound",
+                    "FilePaths": [ "{{AbsoluteFilePath: assets/silence.ogg}}" ],
+                    "StreamedVorbis": false,
+                    "Looped": false
+                }
+            },
+            "When": {
+                "doorCreak_muted": true
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/AudioChanges",
+            "Entries": {
+                "323": {
+                    "ID": "doorCreakReverse",
+                    "Category": "Sound",
+                    "FilePaths": [ "{{AbsoluteFilePath: assets/silence.ogg}}" ],
+                    "StreamedVorbis": false,
+                    "Looped": false
+                }
+            },
+            "When": {
+                "doorCreakReverse_muted": true
+            }
+        },
+
+        // Trashcan lid
+        {
+            "Action": "EditData",
+            "Target": "Data/AudioChanges",
+            "Entries": {
+                "211": {
+                    "ID": "trashcanlid",
+                    "Category": "Sound",
+                    "FilePaths": [ "{{AbsoluteFilePath: assets/silence.ogg}}" ],
+                    "StreamedVorbis": false,
+                    "Looped": false
+                }
+            },
+            "When": {
+                "trashcanlid_muted": true
+            }
+        }
+    ]
+}

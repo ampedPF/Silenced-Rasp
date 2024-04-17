@@ -1,0 +1,14 @@
+{
+    "config.openChest_muted.name": "Chest opening",
+    "config.openChest_muted.description": "openChest sound",
+    "config.doorOpen_muted.name": "Door opening",
+    "config.doorOpen_muted.description": "doorOpen sound",
+    "config.doorClose_muted.name": "Door closing",
+    "config.doorClose_muted.description": "doorClose sound",
+    "config.doorCreak_muted.name": "Shipping box opening",
+    "config.doorCreak_muted.description": "doorCreak sound",
+    "config.doorCreakReverse_muted.name": "Shipping box closing",
+    "config.doorCreakReverse_muted.description": "doorCreakReverse sound",
+    "config.trashcanlid_muted.name": "Trashcan opening",
+    "config.trashcanlid_muted.description": "trashcanlid sound"
+}

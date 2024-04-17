@@ -1,0 +1,50 @@
+name: Release GitHub Actions
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    name: Create Release & Upload Archive
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ARCHIVE_FORMAT: zip
+      LATEST: "false"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set variables
+        run: |
+          echo "NAME=$( (sed 's/\/\/.*//' | jq -r '.Name') < manifest.json )" >> $GITHUB_ENV
+          echo "VERSION=$( (sed 's/\/\/.*//' | jq -r '.Version') < manifest.json )" >> $GITHUB_ENV
+
+      - name: Set latest flag
+        run: |
+          if [[ "$VERSION" =~ ^.*stable$ ]]; then echo "LATEST=true" >> $GITHUB_ENV; fi
+
+      - name: Set archive filename
+        run: |
+          echo "ARCHIVE_PATH=$(echo ${{ env.NAME }}-${{ env.VERSION }}.${{ env.ARCHIVE_FORMAT }} | sed 's/ /-/g')" >> $GITHUB_ENV
+          
+      - name: Create archive
+        run: |
+          git archive --format=${{ env.ARCHIVE_FORMAT }} \
+                      --output=${{ env.ARCHIVE_PATH }} \
+                      --prefix="[CP] ${{ env.NAME }}/" \
+                      ${{ env.VERSION }}
+          ls -la
+          
+      - name: Create release
+        run: |
+          gh release create \
+            ${{ env.VERSION }} \
+            ${{ env.ARCHIVE_PATH }} \
+            --title "${{ env.NAME }} ${{ env.VERSION }}" \
+            --latest=${{ env.LATEST }}
